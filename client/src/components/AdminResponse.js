@@ -24,7 +24,6 @@ function AdminResponse() {
         }}
       >
         <h2 style={{ fontSize: "24px" }}>Leave Request</h2>{" "}
-        {/* Larger heading */}
         <p style={{ fontWeight: "bold", fontSize: "18px", color: "#333" }}>Reason: {reason}</p>
         <p style={{ fontSize: "16px", color: "#555" }}>
           Name: {firstName} {lastName}
@@ -63,7 +62,6 @@ function AdminResponse() {
   return (
     <div style={{ maxWidth: "800px", margin: "20px auto" }}>
       {" "}
-      {/* Increased max width */}
       {requests.map((request, index) => {
         return (
           <RequestComponent

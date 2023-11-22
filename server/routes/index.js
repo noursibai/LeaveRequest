@@ -1,9 +1,7 @@
-// routes/index.js
 const express = require("express");
 const router = express.Router();
 const { User, Admin, Request } = require("../models");
 
-// Create a new admin
 router.post("/admins", async (req, res) => {
   try {
     const newAdmin = await Admin.create(req.body);
@@ -13,7 +11,6 @@ router.post("/admins", async (req, res) => {
   }
 });
 
-// Delete all non-pending requests
 router.delete("/requests/not-pending", async (req, res) => {
   try {
     await Request.deleteMany({ status: { $ne: "pending" } });
@@ -24,18 +21,6 @@ router.delete("/requests/not-pending", async (req, res) => {
 });
 
 
-// // Create a new request
-// router.post("/requests", async (req, res) => {
-//   try {
-//     const { reason } = req.body;
-//     const newRequest = await Request.create({ reason });
-//     res.status(201).json(newRequest);
-//   } catch (error) {
-//     res.status(500).json({ error: error.message });
-//   }
-// });
-
-// Create a new request
 router.post("/requests", async (req, res) => {
   try {
     const { firstName, lastName, id, reason } = req.body;
@@ -46,7 +31,6 @@ router.post("/requests", async (req, res) => {
   }
 });
 
-// Get all pending requests
 router.get("/requests/pending", async (req, res) => {
   try {
     const requests = await Request.find({
@@ -58,7 +42,6 @@ router.get("/requests/pending", async (req, res) => {
   }
 });
 
-// Get all non pending requests
 router.get("/requests/not-pending", async (req, res) => {
   try {
     const requests = await Request.find({
@@ -70,7 +53,7 @@ router.get("/requests/not-pending", async (req, res) => {
   }
 });
 
-// Update request status (approve or deny)
+
 router.put("/requests", async (req, res) => {
   try {
     const { status,id } = req.body;
